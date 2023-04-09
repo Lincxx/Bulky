@@ -41,6 +41,7 @@ namespace BulkyWeb.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
             }
             return View();           
@@ -81,6 +82,7 @@ namespace BulkyWeb.Controllers
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -107,16 +109,6 @@ namespace BulkyWeb.Controllers
         //public IActionResult Delete(Category obj)
         public IActionResult DeletePost(int? id)
         {
-            //if (obj.Name == obj.DisplayOrder.ToString())
-            //{
-            //    ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
-            //}
-
-            //if (obj.Name != null &&  obj.Name.ToLower() == "test")
-            //{
-            //    ModelState.AddModelError("", "Test is an invalid value");
-            //}
-
             //find Cat 
             Category? obj = _db.Categories.Find(id);
             if(obj == null)
@@ -126,6 +118,7 @@ namespace BulkyWeb.Controllers
 
             _db.Categories.Remove(obj);
             _db.SaveChanges();
+            TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index");
         
         }
